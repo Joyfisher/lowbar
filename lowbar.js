@@ -1,9 +1,9 @@
 var _ = {};
 
-_.identity = function(value) {
-  return value;
+_.identity = function (value) {
+    return value;
 };
 
 if (typeof module !== 'undefined') {
-  module.exports = _;
+    module.exports = _;
 }
