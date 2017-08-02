@@ -97,6 +97,7 @@ describe('#each', function () {
         expect(basket).to.eql([1, 0, 2, 1, 3, 2]);
     });
 });
+
 describe('#indexOf', function () {
     it('is a function', function () {
         expect(_.indexOf).to.be.a('function');
@@ -107,5 +108,28 @@ describe('#indexOf', function () {
     });
     it('should return -1 if the value is not present in the array', function () {
         expect(_.indexOf([1, 2, 3], 52)).to.eql(-1);
+    });
+});
+
+describe('#filter', function () {
+    it('is a function', function () {
+        expect(_.filter).to.be.a('function');
+    });
+    it('should return even numbers when passed an array of numbers', function () {
+        var numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        function isEven(num) {
+            return !(num % 2);
+        }
+        expect(_.filter(numberList, isEven)).to.eql([2, 4, 6, 8, 10]);
+    });
+    it('should return words longer than 5 letters long', function () {
+        var sentence = ['elephant', 'and', 'the', 'ginormous', 'giraffe'];
+        function wordOverFiveLetters(word) {
+            return word.length > 5;
+        }
+        expect(_.filter(sentence, wordOverFiveLetters)).to.eql(['elephant', 'ginormous', 'giraffe']);
+    });
+    it('should return [] if passed an empty array', function () {
+        expect(_.filter([])).to.eql([]);
     });
 });

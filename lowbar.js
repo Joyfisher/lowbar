@@ -40,6 +40,16 @@ _.indexOf = function (array, index) {
     return -1;
 };
 
+_.filter = function (array, func) {
+    array = array || [];
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i])) {
+            result.push(array[i]);
+        }
+    }
+    return result;
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;
