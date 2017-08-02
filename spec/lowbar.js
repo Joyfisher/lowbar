@@ -86,7 +86,7 @@ describe('#each', function () {
             basket.push(item);
         }
         _.each([1, 5, 2, 4, 3], putItemInBasket);
-        expect(basket).to.eql([ 1, 5, 2, 4, 3]);
+        expect(basket).to.eql([1, 5, 2, 4, 3]);
     });
     it('calls the function with each item of the array as first argument with its index', function () {
         var basket = [];
@@ -95,5 +95,17 @@ describe('#each', function () {
         }
         _.each([1, 2, 3], putItemInBasket);
         expect(basket).to.eql([1, 0, 2, 1, 3, 2]);
+    });
+});
+describe('#indexOf', function () {
+    it('is a function', function () {
+        expect(_.indexOf).to.be.a('function');
+    });
+    it('returns the index of the item', function () {
+        expect(_.indexOf([1, 2, 3], 2)).to.eql(1);
+        expect(_.indexOf([1, 2, 3], 1)).to.eql(0);
+    });
+    it('should return -1 if the value is not present in the array', function () {
+        expect(_.indexOf([1, 2, 3], 52)).to.eql(-1);
     });
 });

@@ -27,6 +27,20 @@ _.each = function (array, func) {
     }
 };
 
+_.indexOf = function (array, index) {
+    array = array || [];
+    let count = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (i === index) {
+            return count - 1;
+        } else {
+            count++;
+        }
+    }
+    return -1;
+};
+
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }
