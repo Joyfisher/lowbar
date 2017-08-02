@@ -12,6 +12,14 @@ _.first = function (array, n) {
     }
 };
 
+_.last = function (array, n) {
+    if (arguments.length === 1) {
+        return array.pop();
+    } else if (arguments.length === 2) {
+        return array.slice(-n);
+    }
+};
+
 
 if (typeof module !== 'undefined') {
     module.exports = _;
