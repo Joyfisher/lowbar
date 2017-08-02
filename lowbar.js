@@ -20,6 +20,12 @@ _.last = function (array, n) {
     }
 };
 
+_.each = function (array, func) {
+    for (let i = 0; i < array.length; i++) {
+        let item = array[i];
+        func(item, i);
+    }
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;

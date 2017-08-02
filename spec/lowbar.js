@@ -68,3 +68,32 @@ describe('#last', function () {
         expect(_.last()).to.eql(undefined);
     });
 });
+
+describe('#each', function () {
+    it('is a function', function () {
+        expect(_.each).to.be.a('function');
+    });
+    it('calls the passed function as many times as elements in the array', function () {
+        var count = 0;
+        _.each([1, 2, 3, 4, 7], function () {
+            count++;
+        });
+        expect(count).to.equal(5);
+    });
+    it('calls the function with each item of the array as the first argument', function () {
+        var basket = [];
+        function putItemInBasket(item) {
+            basket.push(item);
+        }
+        _.each([1, 5, 2, 4, 3], putItemInBasket);
+        expect(basket).to.eql([ 1, 5, 2, 4, 3]);
+    });
+    it('calls the function with each item of the array as first argument with its index', function () {
+        var basket = [];
+        function putItemInBasket(item, i) {
+            basket.push(item, i);
+        }
+        _.each([1, 2, 3], putItemInBasket);
+        expect(basket).to.eql([1, 0, 2, 1, 3, 2]);
+    });
+});
