@@ -133,6 +133,12 @@ _.shuffle = function (list) {
     return results;
 };
 
+_.invoke = function (list, methodName) {
+    let args = [].slice.call(arguments, 2);
+    return list.map(function (ele) {
+        return ele[methodName] ? ele[methodName].apply(ele, args) : undefined;
+    });
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;

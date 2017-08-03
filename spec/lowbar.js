@@ -258,11 +258,20 @@ describe('#memoize', function () {
 
 describe('#shuffle', function () {
     it('is a function', function () {
-      expect(_.shuffle).to.be.a('function');
+        expect(_.shuffle).to.be.a('function');
     });
-
     it('returns a shuffled copy of the array', function () {
-      expect(_.shuffle([1, 2, 3, 4, 5, 6])).to.not.eql([1,2,3,4,5,6]);
+        expect(_.shuffle([1, 2, 3, 4, 5, 6])).to.not.eql([1, 2, 3, 4, 5, 6]);
     });
-  });
+});
+
+describe('#invoke', function () {
+    it('is a function', function () {
+        expect(_.invoke).to.be.a('function');
+    });
+    it('calls the method on each list value', function () {
+        expect(_.invoke([[5, 1, 7], [3, 2, 1]], 'sort')).to.eql([[1, 5, 7], [1, 2, 3]]);
+    });
+});
+
 
