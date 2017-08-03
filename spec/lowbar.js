@@ -170,3 +170,26 @@ describe('#uniq', function () {
         expect(_.uniq([1, 2, 3, 4])).to.eql([1, 2, 3, 4])
     });
 });
+describe('#map', function () {
+    it('is a function', function () {
+        expect(_.map).to.be.a('function');
+    });
+    it('should return a mapped array', function () {
+        var numberList = [1, 2, 3, 4, 5, 6];
+        function triples(num) {
+            return num * 3;
+        }
+        expect(_.map(numberList, triples)).to.eql([3, 6, 9, 12, 15, 18]);
+    });
+    it('should return a mapped array if given an object', function () {
+        var numberList = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 };
+        function triples(num) {
+            return num * 3;
+        }
+        expect(_.map(numberList, triples)).to.eql([3, 6, 9, 12, 15, 18]);
+    });
+    it('should return a empty array if passed one', function () {
+        var emptyArray = [];
+        expect(_.map(emptyArray)).to.eql([]);
+    });
+});

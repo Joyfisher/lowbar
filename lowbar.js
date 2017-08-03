@@ -62,17 +62,34 @@ _.reject = function (array, func) {
     return result;
 };
 
-_.uniq = function(array) {
-  array = array || [];
-  let newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    let value = array[i];
-    if (newArray.indexOf(value) == -1) {
-      newArray.push(value);
+_.uniq = function (array) {
+    array = array || [];
+    let newArray = [];
+    for (let i = 0; i < array.length; i++) {
+        let value = array[i];
+        if (newArray.indexOf(value) == -1) {
+            newArray.push(value);
+        }
     }
-  }
-  return newArray;
+    return newArray;
 };
+
+_.map = function (array, func) {
+    array = array || [];
+    let newArray = [];
+    if (!Array.isArray(array)) {
+        for (let prop in array) {
+            let objResult = func(array[prop]);
+            newArray.push(objResult);
+        }
+    }
+    for (let i = 0; i < array.length; i++) {
+        let result = func(array[i]);
+        newArray.push(result);
+    }
+    return newArray;
+};
+
 
 
 if (typeof module !== 'undefined') {
