@@ -155,3 +155,18 @@ describe('#reject', function () {
         expect(_.reject([])).to.eql([]);
     });
 });
+describe('#uniq', function () {
+    it('is a function', function () {
+        expect(_.uniq).to.be.a('function');
+    });
+    it('should return a array if passed one', function () {
+        expect(_.uniq([])).to.eql([]);
+    });
+    it('should return an array of unique items', function () {
+        expect(_.uniq([1, 2, 3, 3, 2, 4])).to.eql([1, 2, 3, 4]);
+        expect(_.uniq(['hello', 'goodbye', 'hello', 'hello'])).to.eql(['hello', 'goodbye']);
+    });
+    it('should return the array if all items are uniq', function () {
+        expect(_.uniq([1, 2, 3, 4])).to.eql([1, 2, 3, 4])
+    });
+});

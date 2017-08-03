@@ -53,14 +53,27 @@ _.filter = function (array, func) {
 
 _.reject = function (array, func) {
     array = array || [];
-    var result = [];
-    for (var i = 0; i < array.length; i++) {
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
         if (!func(array[i])) {
             result.push(array[i]);
         }
     }
     return result;
 };
+
+_.uniq = function(array) {
+  array = array || [];
+  let newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    let value = array[i];
+    if (newArray.indexOf(value) == -1) {
+      newArray.push(value);
+    }
+  }
+  return newArray;
+};
+
 
 if (typeof module !== 'undefined') {
     module.exports = _;
