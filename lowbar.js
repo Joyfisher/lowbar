@@ -109,6 +109,20 @@ _.once = function (arg) {
     };
 };
 
+_.memoize = function (fn, hashFunction) {
+    var cache = {};
+    var newFunc = function (key) {
+        var finalKey = hashFunction ? hashFunction.apply(null, arguments) : key;
+        if (!(finalKey in cache)) {
+            cache[finalKey] = fn.apply(null, arguments);
+        }
+        return cache[finalKey];
+    };
+    newFunc.cache = cache;
+    return newFunc;
+};
+
+
 
 if (typeof module !== 'undefined') {
     module.exports = _;

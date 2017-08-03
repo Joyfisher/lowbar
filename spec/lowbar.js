@@ -233,3 +233,25 @@ describe('#once', function () {
         expect(spy.callCount).to.equal(1);
     });
 });
+ 
+  describe('#memoize', function () {
+    it('is a function', function () {
+      expect(_.memoize).to.be.a('function');
+    });
+    it('returns same value as original funcion', function () {
+        let double = function (n) { return 2 * n;};
+        let spy = sinon.spy(double);
+        let memDouble = _.memoize(spy);
+        memDouble(5);
+        memDouble(5);
+        memDouble(5);
+         expect(spy.callCount).to.equal(1); 
+    });
+
+    it('the returned function should have a cache prop', function () {
+        let double = function (n) { return 2 * n;};
+        let memDouble = _.memoize(double);
+        memDouble(3);
+         expect(memDouble.cache).to.eql({'3': 6}); 
+  });
+});
