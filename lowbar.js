@@ -122,6 +122,16 @@ _.memoize = function (fn, hashFunction) {
     return newFunc;
 };
 
+_.shuffle = function (list) {
+    let arrayCopy = Array.prototype.slice.call(list);
+    let results = [];
+    for (let i = 0; i < list.length; i++) {
+        let random = Math.floor(Math.random() * arrayCopy.length);
+        results.push(arrayCopy[random]);
+        arrayCopy.splice(random, 1);
+    }
+    return results;
+};
 
 
 if (typeof module !== 'undefined') {

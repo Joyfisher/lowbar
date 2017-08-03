@@ -255,3 +255,14 @@ describe('#memoize', function () {
         expect(memDouble.cache).to.eql({ '3': 6 });
     });
 });
+
+describe('#shuffle', function () {
+    it('is a function', function () {
+      expect(_.shuffle).to.be.a('function');
+    });
+
+    it('returns a shuffled copy of the array', function () {
+      expect(_.shuffle([1, 2, 3, 4, 5, 6])).to.not.eql([1,2,3,4,5,6]);
+    });
+  });
+
