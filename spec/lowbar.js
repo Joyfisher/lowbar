@@ -133,3 +133,25 @@ describe('#filter', function () {
         expect(_.filter([])).to.eql([]);
     });
 });
+describe('#reject', function () {
+    it('is a function', function () {
+        expect(_.reject).to.be.a('function');
+    });
+    it('should return a list filtered by the predicate', function () {
+        var numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        function isEven(num) {
+            return !(num % 2);
+        }
+        expect(_.reject(numberList, isEven)).to.eql([1, 3, 5, 7, 9]);
+    });
+    it('should return a list filtered by the predicate', function () {
+        var sentence = ['elephant', 'and', 'the', 'ginormous', 'giraffe'];
+        function wordOverFiveLetters(word) {
+            return word.length > 5;
+        }
+        expect(_.reject(sentence, wordOverFiveLetters)).to.eql(['and', 'the']);
+    });
+    it('should return a array if passed one', function () {
+        expect(_.reject([])).to.eql([]);
+    });
+});

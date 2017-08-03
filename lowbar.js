@@ -51,6 +51,17 @@ _.filter = function (array, func) {
     return result;
 };
 
+_.reject = function (array, func) {
+    array = array || [];
+    var result = [];
+    for (var i = 0; i < array.length; i++) {
+        if (!func(array[i])) {
+            result.push(array[i]);
+        }
+    }
+    return result;
+};
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }
