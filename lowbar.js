@@ -99,6 +99,17 @@ _.contains = function (array, target, fromIndex) {
     }
 };
 
+_.once = function (arg) {
+    let called = false;
+    return function () {
+        if (called === false) {
+            called = true;
+            return arg.apply(null, arguments);
+        }
+    };
+};
+
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

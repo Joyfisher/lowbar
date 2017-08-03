@@ -1,7 +1,8 @@
-var path = require('path');
-var expect = require('chai').expect;
+let path = require('path');
+let expect = require('chai').expect;
+let sinon = require('sinon');
 
-var _ = require(path.join(__dirname, '..', './lowbar.js'));
+let _ = require(path.join(__dirname, '..', './lowbar.js'));
 
 describe('_', function () {
     'use strict';
@@ -74,14 +75,14 @@ describe('#each', function () {
         expect(_.each).to.be.a('function');
     });
     it('calls the passed function as many times as elements in the array', function () {
-        var count = 0;
+        let count = 0;
         _.each([1, 2, 3, 4, 7], function () {
             count++;
         });
         expect(count).to.equal(5);
     });
     it('calls the function with each item of the array as the first argument', function () {
-        var basket = [];
+        let basket = [];
         function putItemInBasket(item) {
             basket.push(item);
         }
@@ -89,7 +90,7 @@ describe('#each', function () {
         expect(basket).to.eql([1, 5, 2, 4, 3]);
     });
     it('calls the function with each item of the array as first argument with its index', function () {
-        var basket = [];
+        let basket = [];
         function putItemInBasket(item, i) {
             basket.push(item, i);
         }
@@ -116,14 +117,14 @@ describe('#filter', function () {
         expect(_.filter).to.be.a('function');
     });
     it('should return even numbers when passed an array of numbers', function () {
-        var numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         function isEven(num) {
             return !(num % 2);
         }
         expect(_.filter(numberList, isEven)).to.eql([2, 4, 6, 8, 10]);
     });
     it('should return words longer than 5 letters long', function () {
-        var sentence = ['elephant', 'and', 'the', 'ginormous', 'giraffe'];
+        let sentence = ['elephant', 'and', 'the', 'ginormous', 'giraffe'];
         function wordOverFiveLetters(word) {
             return word.length > 5;
         }
@@ -133,19 +134,20 @@ describe('#filter', function () {
         expect(_.filter([])).to.eql([]);
     });
 });
+
 describe('#reject', function () {
     it('is a function', function () {
         expect(_.reject).to.be.a('function');
     });
     it('should return a list filtered by the predicate', function () {
-        var numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         function isEven(num) {
             return !(num % 2);
         }
         expect(_.reject(numberList, isEven)).to.eql([1, 3, 5, 7, 9]);
     });
     it('should return a list filtered by the predicate', function () {
-        var sentence = ['elephant', 'and', 'the', 'ginormous', 'giraffe'];
+        let sentence = ['elephant', 'and', 'the', 'ginormous', 'giraffe'];
         function wordOverFiveLetters(word) {
             return word.length > 5;
         }
@@ -155,6 +157,7 @@ describe('#reject', function () {
         expect(_.reject([])).to.eql([]);
     });
 });
+
 describe('#uniq', function () {
     it('is a function', function () {
         expect(_.uniq).to.be.a('function');
@@ -170,29 +173,31 @@ describe('#uniq', function () {
         expect(_.uniq([1, 2, 3, 4])).to.eql([1, 2, 3, 4])
     });
 });
+
 describe('#map', function () {
     it('is a function', function () {
         expect(_.map).to.be.a('function');
     });
     it('should return a mapped array', function () {
-        var numberList = [1, 2, 3, 4, 5, 6];
+        let numberList = [1, 2, 3, 4, 5, 6];
         function triples(num) {
             return num * 3;
         }
         expect(_.map(numberList, triples)).to.eql([3, 6, 9, 12, 15, 18]);
     });
     it('should return a mapped array if given an object', function () {
-        var numberList = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 };
+        let numberList = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 };
         function triples(num) {
             return num * 3;
         }
         expect(_.map(numberList, triples)).to.eql([3, 6, 9, 12, 15, 18]);
     });
     it('should return a empty array if passed one', function () {
-        var emptyArray = [];
+        let emptyArray = [];
         expect(_.map(emptyArray)).to.eql([]);
     });
 });
+
 describe('_.contains', function () {
     it('is a function', function () {
         expect(_.contains).to.be.a('function');
@@ -204,6 +209,7 @@ describe('_.contains', function () {
         expect(_.contains([4, 5, 6], 7)).to.equal(false);
     });
 });
+
 describe('it should start searching at the index provided as the third argument', function () {
     it('should return false for ([1,2,3], 1, 1)', function () {
         expect(_.contains([1, 2, 3], 1, 1)).to.equal(false);
@@ -211,4 +217,19 @@ describe('it should start searching at the index provided as the third argument'
 });
 it('should return true for contains([1,2,3,1], 1, 2)', function () {
     expect(_.contains([1, 2, 3, 1], 1, 2)).to.equal(true);
+});
+
+describe('#once', function () {
+    it('is a function', function () {
+        expect(_.once).to.be.a('function');
+    });
+    it('should call only once', function () {
+        let spy = sinon.spy();
+        let limitTest = _.once(spy);
+
+        limitTest();
+        limitTest();
+        limitTest();
+        expect(spy.callCount).to.equal(1);
+    });
 });
