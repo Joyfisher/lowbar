@@ -110,9 +110,9 @@ _.once = function (arg) {
 };
 
 _.memoize = function (fn, hashFunction) {
-    var cache = {};
-    var newFunc = function (key) {
-        var finalKey = hashFunction ? hashFunction.apply(null, arguments) : key;
+    let cache = {};
+    let newFunc = function (key) {
+        let finalKey = hashFunction ? hashFunction.apply(null, arguments) : key;
         if (!(finalKey in cache)) {
             cache[finalKey] = fn.apply(null, arguments);
         }
