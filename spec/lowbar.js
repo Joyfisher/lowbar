@@ -238,6 +238,17 @@ describe('#reduce', function () {
     });
 });
 
+describe('#every', function () {
+    it('is a function', function () {
+        expect(_.every).to.be.a('function');
+    });
+    it('returns false if not all list values pass the predicate test', function () {
+        expect(_.every([2, 4, 5], function (num) { return num % 2 == 0; })).to.equal(false);
+    });
+    it('returns true if all list values pass the predicate test', function () {
+        expect(_.every([2, 4], function (num) { return num % 2 == 0; })).to.equal(true);
+    });
+});
 
 // advanced methods
 describe('#once', function () {
@@ -313,12 +324,15 @@ describe('#zip', function () {
     });
 });
 
-// sortedIndex
-/*  describe('#sortedIndex', function () {
+describe('#sortedIndex', function () {
     it('is a function', function () {
-      expect(_.sortedIndex).to.be.a('function');
+        expect(_.sortedIndex).to.be.a('function');
     });
-  }); */
+
+    it('find the index where the value should be inserted into the list and maintain the list\'s sorted order', function () {
+        expect(_.sortedIndex([10, 20, 30, 40, 50], 35)).to.equal(3);
+    });
+});
 
 describe('#flatten', function () {
     it('is a function', function () {

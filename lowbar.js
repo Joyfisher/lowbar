@@ -114,6 +114,16 @@ _.reduce = function (list, iteratee, memo) {
     return memo;
 };
 
+_.every = function (list, predicate) {
+    for (let i = 0; i < list.length; i++) {
+        if (!predicate(list[i])) {
+            return false;
+        }
+    }
+    return true;
+};
+
+
 
 // advanced method
 
@@ -179,8 +189,14 @@ _.zip = function () {
     });
 };
 
-_.sortedIndex = function (x) {
-    return x;
+_.sortedIndex = function (array, obj) {
+    let value = obj;
+    let low = 0, high = array.length;
+    while (low < high) {
+        let mid = Math.floor((low + high) / 2);
+        if (array[mid] < value) low = mid + 1; else high = mid;
+    }
+    return low;
 };
 
 _.flatten = function (list) {
