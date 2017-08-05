@@ -262,6 +262,16 @@ describe('#some', function () {
     });
 });
 
+describe('#extend', function () {
+    it('is a function', function () {
+        expect(_.extend).to.be.a('function');
+    });
+    it('copies properties from the source object into the destination object', function () {
+        expect(_.extend({ name: 'moe' }, { age: 50 })).to.eql({ name: 'moe', age: 50 });
+    });
+});
+
+
 // advanced methods
 describe('#once', function () {
     it('is a function', function () {
