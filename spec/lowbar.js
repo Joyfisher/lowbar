@@ -274,4 +274,16 @@ describe('#invoke', function () {
     });
 });
 
+  describe('#sortBy', function () {
+    it('is a function', function () {
+      expect(_.sortBy).to.be.a('function');
+    });
+
+    it('returns a list sorted by function', function () {
+      expect(_.sortBy([1, 2, 3, 4, 5, 6], function (num) { return Math.sin(num); })).to.eql([5, 4, 6, 3, 1, 2]);
+    });
+  });
+
+
+
 
