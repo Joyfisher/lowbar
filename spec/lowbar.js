@@ -267,10 +267,19 @@ describe('#extend', function () {
         expect(_.extend).to.be.a('function');
     });
     it('copies properties from the source object into the destination object', function () {
-        expect(_.extend({ name: 'moe' }, { age: 50 })).to.eql({ name: 'moe', age: 50 });
+        expect(_.extend({ name: 'joy' }, { age: 30 })).to.eql({ name: 'joy', age: 30 });
     });
 });
 
+describe('#defaults', function () {
+    it('is a function', function () {
+        expect(_.defaults).to.be.a('function');
+    });
+    it('fills in properties in object with values from defaults', function () {
+        let iceCream = { flavor: 'chocolate' };
+        expect(_.defaults(iceCream, { flavor: 'vanilla', sprinkles: 'lots' })).to.eql({ flavor: 'chocolate', sprinkles: 'lots' });
+    });
+});
 
 // advanced methods
 describe('#once', function () {
