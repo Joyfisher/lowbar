@@ -178,6 +178,32 @@ _.flatten = function (list) {
     return result;
 };
 
+_.intersection = function () {
+    let argumentsArray = Array.prototype.slice.call(arguments);
+
+    let result = [];
+
+    _.each(argumentsArray[0], function (item) {
+        let isShared = false;
+
+        for (let i = 1; i < argumentsArray.length; i++) {
+            _.each(argumentsArray[i], function (check) {
+                if (item === check) {
+                    isShared = true;
+                }
+            });
+        }
+
+        if (isShared) {
+            result.push(item);
+        }
+
+    });
+
+    return result;
+};
+
+
 if (typeof module !== 'undefined') {
     module.exports = _;
 }

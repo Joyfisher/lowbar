@@ -309,5 +309,15 @@ describe('#flatten', function () {
     });
 });
 
+describe('#intersection', function () {
+    it('is a function', function () {
+        expect(_.intersection).to.be.a('function');
+    });
+
+    it('returns the intersection of all arrays passed', function () {
+        expect(_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1])).to.eql([1, 2]);
+    });
+});
+
 
 
