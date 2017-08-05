@@ -274,16 +274,23 @@ describe('#invoke', function () {
     });
 });
 
-  describe('#sortBy', function () {
+describe('#sortBy', function () {
     it('is a function', function () {
-      expect(_.sortBy).to.be.a('function');
+        expect(_.sortBy).to.be.a('function');
     });
-
     it('returns a list sorted by function', function () {
-      expect(_.sortBy([1, 2, 3, 4, 5, 6], function (num) { return Math.sin(num); })).to.eql([5, 4, 6, 3, 1, 2]);
+        expect(_.sortBy([1, 2, 3, 4, 5, 6], function (num) { return Math.sin(num); })).to.eql([5, 4, 6, 3, 1, 2]);
     });
-  });
+});
 
+describe('#zip', function () {
+    it('is a function', function () {
+        expect(_.zip).to.be.a('function');
+    });
+    it('zips together two arrays with elements of the same index paired together', function () {
+        expect(_.zip(['a', 'b', 'c', 'd'], [1, 2, 3])).to.eql([['a', 1], ['b', 2], ['c', 3], ['d', undefined]]);
+    });
+});
 
 
 
