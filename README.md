@@ -14,6 +14,13 @@ First start with the core methods
 8. uniq
 9. map
 10. contains
+11. pluck
+12. reduce
+13. every
+14. some
+15. extend
+16. defaults
+
 
 Then move onto the advanced methods
 

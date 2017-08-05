@@ -219,6 +219,16 @@ it('should return true for contains([1,2,3,1], 1, 2)', function () {
     expect(_.contains([1, 2, 3, 1], 1, 2)).to.equal(true);
 });
 
+describe('#pluck', function () {
+    it('is a function', function () {
+        expect(_.pluck).to.be.a('function');
+    });
+    it('returns an array of extracted values', function () {
+        let stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
+        expect(_.pluck(stooges, 'name')).to.eql(['moe', 'larry', 'curly']);
+    });
+});
+
 describe('#once', function () {
     it('is a function', function () {
         expect(_.once).to.be.a('function');

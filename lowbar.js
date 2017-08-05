@@ -99,6 +99,14 @@ _.contains = function (array, target, fromIndex) {
     }
 };
 
+_.pluck = function (list, propertyName) {
+    let result = [];
+    for (let i = 0; i < list.length; i++) {
+        result.push(list[i][propertyName]);
+    }
+    return result;
+};
+
 _.once = function (arg) {
     let called = false;
     return function () {
