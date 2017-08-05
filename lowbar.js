@@ -132,12 +132,12 @@ _.some = function (list, predicate) {
     return false;
 };
 
-_.extend = function(destination, source) {
-  return Object.assign({}, destination, source);
+_.extend = function (destination, source) {
+    return Object.assign({}, destination, source);
 };
 
-_.defaults = function(object, defaults) {
-  return Object.assign({}, defaults, object);
+_.defaults = function (object, defaults) {
+    return Object.assign({}, defaults, object);
 };
 
 // advanced method
@@ -271,6 +271,30 @@ _.difference = function (list) {
     return results;
 };
 
+_.binaryIndexOf = function (searchElement) {
+    'use strict';
+
+    let minIndex = 0;
+    let maxIndex = this.length - 1;
+    let currentIndex;
+    let currentElement;
+
+    while (minIndex <= maxIndex) {
+        currentIndex = (minIndex + maxIndex) / 2 | 0;
+        currentElement = this[currentIndex];
+
+        if (currentElement < searchElement) {
+            minIndex = currentIndex + 1;
+        }
+        else if (currentElement > searchElement) {
+            maxIndex = currentIndex - 1;
+        }
+        else {
+            return currentIndex;
+        }
+    }
+    return -1;
+};
 
 
 if (typeof module !== 'undefined') {

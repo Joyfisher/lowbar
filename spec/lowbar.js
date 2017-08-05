@@ -395,5 +395,16 @@ describe('#difference', function () {
     });
 });
 
+describe('#binaryIndexOf', function () {
+    it('is a function', function () {
+        expect(_.binaryIndexOf).to.be.a('function');
+    });
+    var test1 = _.binaryIndexOf.call([1, 2, 3], 2);
+    var test2 = _.binaryIndexOf.call([1, 2, 3], 3);
+    it('returns the values from array that are not present in the other arrays.', function () {
+        expect(test1).to.eql(1);
+        expect(test2).to.eql(2);
+    });
+});
 
 
