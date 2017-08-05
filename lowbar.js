@@ -180,12 +180,10 @@ _.flatten = function (list) {
 
 _.intersection = function () {
     let argumentsArray = Array.prototype.slice.call(arguments);
-
     let result = [];
 
     _.each(argumentsArray[0], function (item) {
         let isShared = false;
-
         for (let i = 1; i < argumentsArray.length; i++) {
             _.each(argumentsArray[i], function (check) {
                 if (item === check) {
@@ -193,15 +191,37 @@ _.intersection = function () {
                 }
             });
         }
-
         if (isShared) {
             result.push(item);
+        }
+    });
+    return result;
+};
+
+_.difference = function (list) {
+    let argumentsArray = Array.prototype.slice.call(arguments);
+    let results = [];
+
+    _.each(list, function (item) {
+        let isUnique = true;
+
+        for (let i = 1; i < argumentsArray.length; i++) {
+            for (let j = 0; j < argumentsArray[i].length; j++) {
+                if (item === argumentsArray[i][j]) {
+                    isUnique = false;
+                }
+            }
+        }
+
+        if (isUnique) {
+            results.push(item);
         }
 
     });
 
-    return result;
+    return results;
 };
+
 
 
 if (typeof module !== 'undefined') {
