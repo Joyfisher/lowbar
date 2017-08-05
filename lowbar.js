@@ -161,6 +161,22 @@ _.zip = function () {
     });
 };
 
+_.sortedIndex = function (x) {
+    return x;
+};
+
+_.flatten = function (list) {
+    let result = [];
+    for (let i = 0; i < list.length; i++) {
+        if (Array.isArray(list[i])) {
+            let temp = _.flatten(list[i]);
+            temp.forEach(function (value) { result.push(value); });
+        } else {
+            result.push(list[i]);
+        }
+    }
+    return result;
+};
 
 if (typeof module !== 'undefined') {
     module.exports = _;
