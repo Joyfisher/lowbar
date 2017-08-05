@@ -229,6 +229,17 @@ describe('#pluck', function () {
     });
 });
 
+describe('#reduce', function () {
+    it('is a function', function () {
+        expect(_.reduce).to.be.a('function');
+    });
+    it('reduces a list to a single value', function () {
+        expect(_.reduce([1, 2, 3], function (memo, num) { return memo + num; }, 0)).to.equal(6);
+    });
+});
+
+
+// advanced methods
 describe('#once', function () {
     it('is a function', function () {
         expect(_.once).to.be.a('function');

@@ -107,6 +107,16 @@ _.pluck = function (list, propertyName) {
     return result;
 };
 
+_.reduce = function (list, iteratee, memo) {
+    for (let i = 0; i < list.length; i++) {
+        memo = iteratee(memo, list[i]);
+    }
+    return memo;
+};
+
+
+// advanced method
+
 _.once = function (arg) {
     let called = false;
     return function () {
